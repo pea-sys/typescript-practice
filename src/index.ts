@@ -1,3 +1,4 @@
+let result: string = "";
 for( let i=0; i<=100; i++ ) {
   let output = "FizzBuzz";
   if ( i % 3 !== 0 && i % 5 !== 0 ){
@@ -9,5 +10,6 @@ for( let i=0; i<=100; i++ ) {
   else if ( i % 3 !== 0 && i % 5 === 0 ){
     output ="Buzz";
   }
-  console.log(output);
+  result+= output + " ";
 }
+console.log(result);
