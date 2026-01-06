@@ -1,20 +1,35 @@
-function getFizzBuzzsStr(num: number): string {
-  let output = "FizzBuzz";
-  if ( num % 3 !== 0 && num % 5 !== 0 ){
-    output = String(num);
+// function getFizzBuzzsStr(num: number): string {
+//   let output = "FizzBuzz";
+//   if ( num % 3 !== 0 && num % 5 !== 0 ){
+//     output = String(num);
+//   }
+//   else if ( num % 3 === 0 && num % 5 !== 0 ){
+//     output ="Fizz";
+//   }
+//   else if ( num % 3 !== 0 && num % 5 === 0 ){
+//     output ="Buzz";
+//   }
+//   return output;
+// }
+// for( let i=0; i<=100; i++ ) {
+//   const message = getFizzBuzzsStr(i);
+//   console.log(message);
+// }
+
+function map(array: number[], callback: (num: number) => number): number[] {
+  const result: number[] = [];
+  for (let i = 0; i < array.length; i++) {
+    const mapped = callback(array[i]);
+    result.push(mapped);
   }
-  else if ( num % 3 === 0 && num % 5 !== 0 ){
-    output ="Fizz";
-  }
-  else if ( num % 3 !== 0 && num % 5 === 0 ){
-    output ="Buzz";
-  }
-  return output;
+  return result;
 }
-for( let i=0; i<=100; i++ ) {
-  const message = getFizzBuzzsStr(i);
-  console.log(message);
-}
+const numbers = [1, 1, 2, 3, 5, 8, 13];
+const result = map(numbers, (x) => x * 10);
+console.log(result);
+ 
+  
+
 // type User = {
 //   name: string;
 //   age: number;
