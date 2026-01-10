@@ -16,17 +16,17 @@
 //   console.log(message);
 // }
 
-function map(array: number[], callback: (num: number) => number): number[] {
-  const result: number[] = [];
-  for (let i = 0; i < array.length; i++) {
-    const mapped = callback(array[i]);
-    result.push(mapped);
-  }
-  return result;
-}
-const numbers = [1, 1, 2, 3, 5, 8, 13];
-const result = map(numbers, (x) => x * 10);
-console.log(result);
+// function map(array: number[], callback: (num: number) => number): number[] {
+//   const result: number[] = [];
+//   for (let i = 0; i < array.length; i++) {
+//     const mapped = callback(array[i]);
+//     result.push(mapped);
+//   }
+//   return result;
+// }
+// const numbers = [1, 1, 2, 3, 5, 8, 13];
+// const result = map(numbers, (x) => x * 10);
+// console.log(result);
  
   
 
@@ -60,3 +60,23 @@ console.log(result);
 //     console.log(`${user.name}(${user.age})はプレミアムユーザーではありません。`);
 //   }
 // }
+
+class User{
+  readonly name: string;
+  readonly age: number;
+  constructor(name:string, age:number){
+    if (name === ""){
+      throw new Error("名前が空です");
+    }
+    this.name = name;
+    this.age = age;
+  }
+  getMessage(message:string): string {
+    return `${this.name}(${this.age}):${message}`;
+  }
+}
+
+
+
+const uhyo = new User("uhyo", 26);
+console.log(uhyo.getMessage("こんにちは"));
