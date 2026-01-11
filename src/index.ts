@@ -114,12 +114,14 @@
 
 import { readFileSync } from "fs";
 import path, {basename} from "path";
+import { fileURLToPath } from "url";
 
+const filedir = path.dirname(fileURLToPath(import.meta.url))
+const dataFilePath = path.join(filedir, "../uhyo.txt");
 
-const data = readFileSync(path.basename("../uhyo.txt"), {encoding:"utf8"});
 const main = () => {
   try {
-    const data = readFileSync("uhyo.txt", {encoding:"utf8"});
+   const data = readFileSync(dataFilePath, {encoding:"utf8"});
     console.log(data);
   } catch (e) {
     console.log(e);
