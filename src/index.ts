@@ -113,9 +113,10 @@
 // }
 
 import { readFileSync } from "fs";
+import path, {basename} from "path";
 
 
-const data = readFileSync("uhyo.txt", {encoding:"utf8"});
+const data = readFileSync(path.basename("../uhyo.txt"), {encoding:"utf8"});
 const main = () => {
   try {
     const data = readFileSync("uhyo.txt", {encoding:"utf8"});
