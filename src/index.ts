@@ -112,20 +112,26 @@
 //   }
 // }
 
-import { readFileSync } from "fs";
-import path, {basename} from "path";
+import { readFile } from "fs/promises";
+import path from "path";
 import { fileURLToPath } from "url";
 
-const filedir = path.dirname(fileURLToPath(import.meta.url))
-const dataFilePath = path.join(filedir, "../uhyo.txt");
+const filepath = fileURLToPath(import.meta.url);
+const filedir = path.dirname(filepath);
+const dataFile = path.join(filedir, "../uhyo.txt");
 
-const main = () => {
-  try {
-   const data = readFileSync(dataFilePath, {encoding:"utf8"});
-    console.log(data);
-  } catch (e) {
-    console.log(e);
-  }
+const data = await readFile(dataFile, {encoding:"utf8"});
+
+const sleep = (ms: number): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 };
+sleep(1).then(() => {
+  process.exit(0);
+});
 
-main();
+try {
+  const data = await readFile(dataFile, {encoding:"utf8"});
+  console.log(data);
+  } catch (e) {
+  console.log(e);
+ }
