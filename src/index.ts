@@ -89,11 +89,13 @@ type Option<T> = {
 };
 
 function ConsoleLog(obj:Option<number>): void {
-  if (obj.tag === "some") {
+  if (isSome(obj)) {
     console.log(obj.value);
   } 
 }
-
+function isSome<T>(obj: Option<T>): obj is { tag: "some"; value: T } {
+  return obj.tag === "some";
+}
 ConsoleLog({ tag: "some", value: 42 });
 
  
