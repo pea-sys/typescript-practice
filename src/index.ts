@@ -81,34 +81,48 @@
 // const uhyo = new User("uhyo", 26);
 // console.log(uhyo.getMessage("こんにちは"));
 
-type Option<T> = {
-  tag: "some";
-  value: T;
-} | {
-  tag: "none";  
-};
-function isSome<T>(obj: Option<T>): obj is { tag: "some"; value: T } {
-  return obj.tag === "some";
-}
+// type Option<T> = {
+//   tag: "some";
+//   value: T;
+// } | {
+//   tag: "none";  
+// };
+// function isSome<T>(obj: Option<T>): obj is { tag: "some"; value: T } {
+//   return obj.tag === "some";
+// }
  
-function ConsoleLog(obj:Option<number>): void {
-  if (isSome(obj)) {
-    console.log(obj.value);
-  } 
-}
-//ConsoleLog({ tag: "some", value: 42 });
-function doubleOption(obj:Option<number>): Option<number> {
-  return mapOption(obj, (x) => x * 2);
-}
-const four: Option<number> = doubleOption({ tag: "some", value: 4 });
-const nothing: Option<number> = doubleOption({ tag: "none" });
-console.log(four);
-console.log(nothing);
-function mapOption<T, U>(obj: Option<T>, f: (x: T) => U): Option<U> {
-  if (isSome(obj)) {
-    return { tag: "some", value: f(obj.value) }; 
-  } else {
-    return { tag: "none" }; 
-  }
-}
+// function ConsoleLog(obj:Option<number>): void {
+//   if (isSome(obj)) {
+//     console.log(obj.value);
+//   } 
+// }
+// //ConsoleLog({ tag: "some", value: 42 });
+// function doubleOption(obj:Option<number>): Option<number> {
+//   return mapOption(obj, (x) => x * 2);
+// }
+// const four: Option<number> = doubleOption({ tag: "some", value: 4 });
+// const nothing: Option<number> = doubleOption({ tag: "none" });
+// console.log(four);
+// console.log(nothing);
+// function mapOption<T, U>(obj: Option<T>, f: (x: T) => U): Option<U> {
+//   if (isSome(obj)) {
+//     return { tag: "some", value: f(obj.value) }; 
+//   } else {
+//     return { tag: "none" }; 
+//   }
+// }
 
+import { readFileSync } from "fs";
+
+
+const data = readFileSync("uhyo.txt", {encoding:"utf8"});
+const main = () => {
+  try {
+    const data = readFileSync("uhyo.txt", {encoding:"utf8"});
+    console.log(data);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+main();
