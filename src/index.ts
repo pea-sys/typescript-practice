@@ -61,22 +61,39 @@
 //   }
 // }
 
-class User{
-  readonly name: string;
-  readonly age: number;
-  constructor(name:string, age:number){
-    if (name === ""){
-      throw new Error("名前が空です");
-    }
-    this.name = name;
-    this.age = age;
-  }
-  getMessage(message:string): string {
-    return `${this.name}(${this.age}):${message}`;
-  }
+// class User{
+//   readonly name: string;
+//   readonly age: number;
+//   constructor(name:string, age:number){
+//     if (name === ""){
+//       throw new Error("名前が空です");
+//     }
+//     this.name = name;
+//     this.age = age;
+//   }
+//   getMessage(message:string): string {
+//     return `${this.name}(${this.age}):${message}`;
+//   }
+// }
+
+
+
+// const uhyo = new User("uhyo", 26);
+// console.log(uhyo.getMessage("こんにちは"));
+
+type Option<T> = {
+  tag: "some";
+  value: T;
+} | {
+  tag: "none";  
+};
+
+function ConsoleLog(obj:Option<number>): void {
+  if (obj.tag === "some") {
+    console.log(obj.value);
+  } 
 }
 
+ConsoleLog({ tag: "some", value: 42 });
 
-
-const uhyo = new User("uhyo", 26);
-console.log(uhyo.getMessage("こんにちは"));
+ 
