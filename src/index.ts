@@ -87,15 +87,28 @@ type Option<T> = {
 } | {
   tag: "none";  
 };
-
+function isSome<T>(obj: Option<T>): obj is { tag: "some"; value: T } {
+  return obj.tag === "some";
+}
+ 
 function ConsoleLog(obj:Option<number>): void {
   if (isSome(obj)) {
     console.log(obj.value);
   } 
 }
-function isSome<T>(obj: Option<T>): obj is { tag: "some"; value: T } {
-  return obj.tag === "some";
+//ConsoleLog({ tag: "some", value: 42 });
+function doubleOption(obj:Option<number>): Option<number> {
+  return mapOption(obj, (x) => x * 2);
 }
-ConsoleLog({ tag: "some", value: 42 });
+const four: Option<number> = doubleOption({ tag: "some", value: 4 });
+const nothing: Option<number> = doubleOption({ tag: "none" });
+console.log(four);
+console.log(nothing);
+function mapOption<T, U>(obj: Option<T>, f: (x: T) => U): Option<U> {
+  if (isSome(obj)) {
+    return { tag: "some", value: f(obj.value) }; 
+  } else {
+    return { tag: "none" }; 
+  }
+}
 
- 
